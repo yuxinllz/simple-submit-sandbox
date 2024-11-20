@@ -37,13 +37,20 @@ const Index = () => {
 
     setIsSubmitting(true);
 
-    // Simulate API call
     try {
+      // Simulate form processing
       await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Log the form data (for demonstration purposes)
+      console.log({
+        username,
+        email,
+        file: file ? file.name : null
+      });
       
       toast({
         title: "Success!",
-        description: "Your information has been submitted successfully",
+        description: "Form submitted successfully",
       });
 
       // Reset form
@@ -62,7 +69,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-form-100">
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-100">
       <div className="container max-w-2xl py-16">
         <div className="bg-white rounded-xl shadow-sm border p-8">
           <h1 className="text-3xl font-semibold text-center mb-8">
