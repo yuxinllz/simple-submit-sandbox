@@ -49,7 +49,7 @@ const FileUpload = ({ onFileChange }: FileUploadProps) => {
           }`}
         >
           <input {...getInputProps()} />
-          <Upload className="mx-auto h-12 w-12 text-form-400" />
+          <Upload className="mx-auto h-12 w-12 text-green-500" />
           <p className="mt-2 text-sm text-gray-600">
             {isDragActive ? 'Drop the file here' : 'Drag & drop a file here, or click to select'}
           </p>
@@ -61,7 +61,7 @@ const FileUpload = ({ onFileChange }: FileUploadProps) => {
               <img src={preview} alt="Preview" className="w-16 h-16 object-cover rounded" />
             ) : (
               <div className="w-16 h-16 bg-form-100 rounded flex items-center justify-center">
-                <Upload className="h-8 w-8 text-form-400" />
+                <Upload className="h-8 w-8 text-green-500" />
               </div>
             )}
             <div className="flex-1 min-w-0">
