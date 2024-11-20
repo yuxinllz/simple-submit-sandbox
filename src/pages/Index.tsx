@@ -121,6 +121,10 @@ const Index = () => {
                 "Submit"
               )}
             </Button>
+
+            <p className="text-sm text-muted-foreground text-center mt-4">
+              All fields marked with * are required. Uploaded files should be less than 10MB.
+            </p>
           </form>
         </div>
       </div>
