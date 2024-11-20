@@ -122,9 +122,11 @@ const Index = () => {
               )}
             </Button>
 
-            <p className="text-sm text-muted-foreground text-center mt-4">
-              All fields marked with * are required. Uploaded files should be less than 10MB.
-            </p>
+            <div className="text-sm text-muted-foreground text-center mt-4 space-y-1">
+              <p>All fields marked with * are required.</p>
+              <p>Uploaded files should be less than 10MB.</p>
+              <p>Please ensure all information is accurate before submitting.</p>
+            </div>
           </form>
         </div>
       </div>
