@@ -1,6 +1,6 @@
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { QuestionCircle } from "lucide-react";
+import { HelpCircle } from "lucide-react";
 
 const InstructionsPanel = () => {
   return (
@@ -11,7 +11,7 @@ const InstructionsPanel = () => {
           size="icon"
           className="fixed bottom-8 right-8 h-12 w-12 rounded-full shadow-lg"
         >
-          <QuestionCircle className="h-6 w-6" />
+          <HelpCircle className="h-6 w-6" />
         </Button>
       </SheetTrigger>
       <SheetContent className="w-[440px] sm:w-[540px] overflow-y-auto">
