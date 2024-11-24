@@ -10,7 +10,7 @@ import InstructionsPanel from "@/components/InstructionsPanel";
 const Index = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
-  const [file, setFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[] | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -42,7 +42,7 @@ const Index = () => {
       console.log({
         username,
         email,
-        file: file ? file.name : null
+        files: files ? files.map(f => f.name) : null
       });
       
       toast({
@@ -52,7 +52,7 @@ const Index = () => {
 
       setUsername("");
       setEmail("");
-      setFile(null);
+      setFiles(null);
     } catch (error) {
       toast({
         variant: "destructive",
@@ -99,8 +99,8 @@ const Index = () => {
             </div>
 
             <div className="space-y-2">
-              <Label>Upload File</Label>
-              <FileUpload onFileChange={setFile} />
+              <Label>Upload Files</Label>
+              <FileUpload onFileChange={setFiles} />
             </div>
 
             <Button
@@ -120,7 +120,7 @@ const Index = () => {
 
             <div className="text-sm text-muted-foreground text-center mt-4 space-y-1">
               <p>All fields marked with * are required.</p>
-              <p>Uploaded files should be less than 10MB.</p>
+              <p>You can upload multiple files and folders.</p>
               <p>Please ensure all information is accurate before submitting.</p>
             </div>
           </form>
