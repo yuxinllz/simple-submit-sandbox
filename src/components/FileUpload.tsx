@@ -7,14 +7,6 @@ interface FileUploadProps {
   onFileChange: (files: File[] | null) => void;
 }
 
-// Extend the HTMLInputElement interface to include directory-related properties
-declare module 'react' {
-  interface InputHTMLAttributes<T> extends HTMLAttributes<T> {
-    directory?: string;
-    webkitdirectory?: string;
-  }
-}
-
 const FileUpload = ({ onFileChange }: FileUploadProps) => {
   const [files, setFiles] = useState<File[]>([]);
   const [previews, setPreviews] = useState<{ [key: string]: string }>({});
@@ -43,6 +35,7 @@ const FileUpload = ({ onFileChange }: FileUploadProps) => {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     multiple: true,
+    // Enable directory/folder selection
     noDrag: false,
     noClick: false,
     noKeyboard: false
@@ -90,8 +83,8 @@ const FileUpload = ({ onFileChange }: FileUploadProps) => {
               const input = document.createElement('input');
               input.type = 'file';
               input.multiple = true;
-              input.setAttribute('webkitdirectory', '');
-              input.setAttribute('directory', '');
+              input.webkitdirectory = true;
+              input.directory = '';
               input.onchange = (e) => {
                 const files = Array.from((e.target as HTMLInputElement).files || []);
                 onDrop(files);
