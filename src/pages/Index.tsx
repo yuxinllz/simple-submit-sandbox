@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,13 +6,24 @@ import { Label } from "@/components/ui/label";
 import FileUpload from "@/components/FileUpload";
 import { Loader2 } from "lucide-react";
 import InstructionsPanel from "@/components/InstructionsPanel";
+import LoadingScreen from "@/components/LoadingScreen";
 
 const Index = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [files, setFiles] = useState<File[] | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
+
+  useEffect(() => {
+    // Simulate initial loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,6 +74,10 @@ const Index = () => {
       setIsSubmitting(false);
     }
   };
+
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-100">
